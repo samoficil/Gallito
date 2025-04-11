@@ -2,168 +2,52 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallito Arena - Página Oficial</title>
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <title>Compra GTO</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <style>
-        /* Estilos generales */
         body {
             font-family: Arial, sans-serif;
-            background: #f9a825; /* Fondo amarillo */
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        h1 {
-            color: #000;
-            font-size: 3em;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-            margin-top: 20px;
-        }
-
-        .hero-section {
-            width: 100%;
-            height: 100vh;
-            background-image: url('https://via.placeholder.com/1920x1080'); /* Coloca aquí la URL de tu imagen de fondo */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            color: #fff;
             text-align: center;
-            animation: fadeIn 3s ease-in-out;
-        }
-
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2.5em;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-        }
-
-        .btn {
-            background-color: #f57f17;
+            background: #121212;
             color: white;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        button {
+            background-color: #00ff88;
+            color: black;
             padding: 15px 30px;
-            font-size: 18px;
+            font-size: 16px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            margin: 20px;
-            transition: background-color 0.3s;
+            margin: 10px;
+            transition: background 0.3s;
         }
-
-        .btn:hover {
-            background-color: #f9a825;
+        button:hover {
+            background-color: #00cc6e;
         }
-
-        .content-section {
-            padding: 50px;
-            text-align: center;
-            background-color: #f9a825;
-            width: 100%;
-            animation: fadeInUp 3s ease-in-out;
-        }
-
-        .content-section p {
-            font-size: 1.2em;
-        }
-
-        .images-gallery {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .images-gallery img {
-            max-width: 400px;
-            height: auto;
-        }
-
-        /* Animaciones */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .counter {
-            font-size: 2em;
+        #supplyCounter {
+            font-size: 28px;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 30px;
+            color: #00ffcc;
         }
     </style>
 </head>
 <body>
-
-    <!-- Sección Hero (con imagen de fondo) -->
-    <div class="hero-section">
-        <div class="hero-text">
-            <h1>¡Bienvenido a Gallito Arena!</h1>
-            <p>¡Entra en el campo de batalla y gana recompensas exclusivas!</p>
-            <button class="btn" onclick="connectWallet()">Conectar Billetera</button>
-            <button class="btn" onclick="buyTokens()">Comprar GTO</button>
-        </div>
+    <div class="container">
+        <h1>🚀 ¡Compra tu token GTO ahora!</h1>
+        <button onclick="connectWallet()">Conectar Wallet</button>
+        <button onclick="buyTokens()">Comprar 1 BNB en GTO</button>
+        <div id="supplyCounter">Cargando suministro...</div>
     </div>
 
-    <!-- Sección de contenido -->
-    <div class="content-section">
-        <h2>¡Únete a Gallito Arena!</h2>
-        <p>Gallito Arena es el juego más esperado del año. Forma tu equipo, lucha en batallas épicas y gana tokens GTO como recompensa. ¡No te lo puedes perder!</p>
-        <img src="https://via.placeholder.com/800x400" alt="Imagen de Gallito Arena" style="max-width: 100%; height: auto; margin-top: 20px;">
-    </div>
-
-    <!-- Sección de imágenes del juego -->
-    <div class="images-gallery">
-        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 1">
-        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 2">
-        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 3">
-        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 4">
-    </div>
-
-    <!-- Contador de suministro -->
-    <div class="content-section">
-        <h2>Contador de Suministro</h2>
-        <p>Aquí podrás ver el suministro total de GTO en circulación.</p>
-        <div class="counter" id="supplyCounter">Suministro Total: 1,000,000,000 GTO</div>
-    </div>
-
-    <!-- Otras secciones -->
-    <div class="content-section">
-        <h2>¿Qué es Gallito Arena?</h2>
-        <p>Gallito Arena es un juego Play-to-Earn que te permite ganar GTO mientras compites en batallas contra otros jugadores. ¡Ponte a prueba, forma alianzas y gana recompensas únicas!</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Recompensas Exclusivas</h2>
-        <p>Participa en eventos especiales dentro del juego y consigue tokens GTO como recompensa. ¡Las batallas nunca fueron tan emocionantes!</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Noticias del Juego</h2>
-        <p>¡Mantente al tanto de las últimas actualizaciones de Gallito Arena! Nuevas características, personajes y mucho más por venir.</p>
-    </div>
-
-    <!-- Script -->
     <script>
         let web3;
         let userAccount;
 
-        // Conectar billetera
         async function connectWallet() {
             if (window.ethereum) {
                 web3 = new Web3(window.ethereum);
@@ -181,14 +65,13 @@
             }
         }
 
-        // Comprar Tokens
         async function buyTokens() {
             if (userAccount) {
-                const tokenAddress = "0x659a0f0D27378c9f25B97B0fE0F0df6fD1a6D3d4"; // Dirección del contrato
-                const tokenABI = [{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]; // ABI básico
+                const tokenAddress = "0x659a0f0D27378c9f25B97B0fE0F0df6fD1a6D3d4";
+                const tokenABI = [{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
 
                 const tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
-                const amountToBuy = web3.utils.toWei('1', 'ether'); // Cambia por la cantidad de GTO que deseas comprar
+                const amountToBuy = web3.utils.toWei('1', 'ether');
 
                 try {
                     await web3.eth.sendTransaction({
@@ -206,80 +89,40 @@
             }
         }
 
-        // Simulando el contador de suministro
-        let totalSupply = 1000000000; // Suministro total de GTO
-        let supplyCounter = document.getElementById("supplyCounter");
+        function animateCounter(finalValue) {
+            const counterElement = document.getElementById("supplyCounter");
+            let current = 0;
+            const duration = 2000;
+            const increment = finalValue / (duration / 50);
 
-        function updateSupplyCounter() {
-            supplyCounter.textContent = `Suministro Total: ${totalSupply} GTO`;
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= finalValue) {
+                    current = finalValue;
+                    clearInterval(interval);
+                }
+                counterElement.innerText = current.toLocaleString(undefined, {maximumFractionDigits: 2}) + " GTO";
+            }, 50);
         }
 
-        setInterval(updateSupplyCounter, 1000); // Actualiza cada segundo (esto es solo un ejemplo)
+        async function getTotalSupply() {
+            const tokenAddress = "0x659a0f0D27378c9f25B97B0fE0F0df6fD1a6D3d4";
+            const tokenABI = [{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
+
+            const web3js = new Web3(window.ethereum || "https://bsc-dataseed.binance.org/");
+            const contract = new web3js.eth.Contract(tokenABI, tokenAddress);
+
+            try {
+                const supply = await contract.methods.totalSupply().call();
+                const formattedSupply = parseFloat(web3js.utils.fromWei(supply, 'ether'));
+                animateCounter(formattedSupply);
+            } catch (error) {
+                console.error(error);
+                document.getElementById("supplyCounter").innerText = "No disponible";
+            }
+        }
+
+        window.addEventListener('load', getTotalSupply);
     </script>
 </body>
 </html>
-.fadeInSection {
-    animation: fadeInUp 2s ease-in-out;
-}
-<style>
-</body>
-</html>
-<!-- Nueva sección extendida -->
-<div class="content-section fadeInSection" style="background-color:#fff3cd; color:#000;">
-    <h2>🎮 Gallito Arena - Galería del Juego</h2>
-
-    <!-- Categoría: Batallas -->
-    <h3>⚔️ Batallas Épicas</h3>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-        <div class="card-box" style="width: 300px;">
-            <div class="card-content" style="padding: 15px; border-radius: 10px;">
-                <img src="https://via.placeholder.com/300x200?text=Batalla+1" style="width: 100%; border-radius: 8px;">
-                <p>Combates intensos en la arena del honor 🥊</p>
-            </div>
-        </div>
-        <div class="card-box" style="width: 300px;">
-            <div class="card-content" style="padding: 15px; border-radius: 10px;">
-                <img src="https://via.placeholder.com/300x200?text=Batalla+2" style="width: 100%; border-radius: 8px;">
-                <p>Desata habilidades especiales de tus gallitos 💥</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Categoría: Personalización -->
-    <h3 style="margin-top: 40px;">🎨 Personaliza tu Gallito</h3>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-        <div class="card-box" style="width: 300px;">
-            <div class="card-content" style="padding: 15px; border-radius: 10px;">
-                <img src="https://via.placeholder.com/300x200?text=Gallito+Skin+1" style="width: 100%; border-radius: 8px;">
-                <p>Trajes legendarios y únicos para destacar 🐔✨</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contador de Suministro -->
-    <div style="margin-top: 50px; font-size: 1.5em;">
-        <p><strong>🔢 Suministro total de GTO:</strong> <span id="supplyCounter">Cargando...</span></p>
-    </div>
-</div>
-
-<!-- Script para contador -->
-<script>
-    async function getTotalSupply() {
-        const tokenAddress = "0x659a0f0D27378c9f25B97B0fE0F0df6fD1a6D3d4";
-        const tokenABI = [{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
-        const web3js = new Web3(window.ethereum);
-        const contract = new web3js.eth.Contract(tokenABI, tokenAddress);
-
-        try {
-            const supply = await contract.methods.totalSupply().call();
-            const formattedSupply = web3js.utils.fromWei(supply, 'ether');
-            document.getElementById("supplyCounter").innerText = formattedSupply + " GTO";
-        } catch (error) {
-            console.error(error);
-            document.getElementById("supplyCounter").innerText = "No disponible";
-        }
-    }
-
-    window.addEventListener('load', getTotalSupply);
-</script>
-
