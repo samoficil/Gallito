@@ -16,7 +16,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         h1 {
@@ -87,6 +87,11 @@
             0% { opacity: 0; transform: translateY(50px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+
+        /* Agregar más espacio al final de la página */
+        .extra-space {
+            height: 2000px; /* Puedes ajustar este valor para hacer la página más larga o corta */
+        }
     </style>
 </head>
 <body>
@@ -107,6 +112,9 @@
         <p>Gallito Arena es el juego más esperado del año. Forma tu equipo, lucha en batallas épicas y gana tokens GTO como recompensa. ¡No te lo puedes perder!</p>
         <img src="https://via.placeholder.com/800x400" alt="Imagen de Gallito Arena" style="max-width: 100%; height: auto; margin-top: 20px;">
     </div>
+
+    <!-- Sección adicional para alargar la página -->
+    <div class="extra-space"></div>
 
     <!-- Script -->
     <script>
