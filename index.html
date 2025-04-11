@@ -3,166 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallito Token - GTO</title>
+    <title>Gallito Arena - Página Oficial</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
     <style>
+        /* Estilos generales */
         body {
             font-family: Arial, sans-serif;
-            background-color: #fff8e1;
-            text-align: center;
-            padding: 50px;
-            color: #333;
+            background: #f9a825; /* Fondo amarillo */
             margin: 0;
             padding: 0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         h1 {
-            color: #f9a825;
-            font-size: 36px;
-            margin-bottom: 20px;
-            transition: all 0.5s ease;
+            color: #000;
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            margin-top: 20px;
         }
 
-        p {
-            color: #555;
-            font-size: 18px;
+        .hero-section {
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://via.placeholder.com/1920x1080'); /* Coloca aquí la URL de tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 3s ease-in-out;
         }
 
-        button {
-            background-color: #f9a825;
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5em;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+        }
+
+        .btn {
+            background-color: #f57f17;
             color: white;
             padding: 15px 30px;
             font-size: 18px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 10px 0;
-            transition: background-color 0.3s ease;
+            margin: 20px;
+            transition: background-color 0.3s;
         }
 
-        button:hover {
-            background-color: #f57f17;
+        .btn:hover {
+            background-color: #f9a825;
         }
 
-        #status {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #4caf50;
+        .content-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #f9a825;
+            width: 100%;
+            animation: fadeInUp 3s ease-in-out;
         }
 
-        /* Estilo para las secciones */
-        section {
-            margin: 50px 0;
-            padding: 20px;
+        .content-section p {
+            font-size: 1.2em;
         }
 
-        #roadmap, #faq, #team, #community, #testimonials, #contact {
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #333;
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
-
-        .feature, .testimonial {
-            margin-bottom: 20px;
-        }
-
-        .roadmap-item, .faq-item {
-            padding: 10px;
-            background-color: #fff;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Animación de scroll */
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-
+        /* Animaciones */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sección de Bienvenida -->
-    <h1 class="fade-in">Gallito Token (GTO) - Preventa</h1>
-    <p class="fade-in">¡Bienvenido a la preventa de Gallito! ¡Compra GTO ahora y gana recompensas exclusivas!</p>
+    <!-- Sección Hero (con imagen de fondo) -->
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>¡Bienvenido a Gallito Arena!</h1>
+            <p>¡Entra en el campo de batalla y gana recompensas exclusivas!</p>
+            <button class="btn" onclick="connectWallet()">Conectar Billetera</button>
+            <button class="btn" onclick="buyTokens()">Comprar GTO</button>
+        </div>
+    </div>
 
-    <!-- Conectar billetera y Comprar GTO -->
-    <button onclick="connectWallet()">Conectar billetera</button>
-    <br><br>
-    <button onclick="buyTokens()">Comprar GTO</button>
-    <br><br>
-    <p id="status"></p>
+    <!-- Sección de contenido -->
+    <div class="content-section">
+        <h2>¡Únete a Gallito Arena!</h2>
+        <p>Gallito Arena es el juego más esperado del año. Forma tu equipo, lucha en batallas épicas y gana tokens GTO como recompensa. ¡No te lo puedes perder!</p>
+        <img src="https://via.placeholder.com/800x400" alt="Imagen de Gallito Arena" style="max-width: 100%; height: auto; margin-top: 20px;">
+    </div>
 
-    <!-- Características -->
-    <section id="features" class="fade-in">
-        <h2>Características de Gallito Token</h2>
-        <div class="feature">- Tokens gratuitos para los primeros jugadores.</div>
-        <div class="feature">- Sistema de recompensas por participación.</div>
-        <div class="feature">- Plataforma segura y confiable.</div>
-    </section>
-
-    <!-- Roadmap -->
-    <section id="roadmap" class="fade-in">
-        <h2>Roadmap</h2>
-        <div class="roadmap-item">Fase 1: Lanzamiento de la preventa (hoy).</div>
-        <div class="roadmap-item">Fase 2: Desarrollo del juego Gallito Arena.</div>
-        <div class="roadmap-item">Fase 3: Lista en exchanges.</div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="fade-in">
-        <h2>Preguntas Frecuentes</h2>
-        <div class="faq-item">¿Cómo puedo comprar GTO? -> Puedes comprar GTO conectando tu billetera y realizando un pago con Ethereum.</div>
-        <div class="faq-item">¿Cómo participo en el juego? -> Simplemente compra GTO y únete al juego Gallito Arena cuando esté disponible.</div>
-        <div class="faq-item">¿Es seguro el token? -> Sí, hemos auditado el contrato de GTO para garantizar su seguridad.</div>
-    </section>
-
-    <!-- Equipo -->
-    <section id="team" class="fade-in">
-        <h2>Conoce a Nuestro Equipo</h2>
-        <div class="team-member">Juan Pérez - Desarrollador de Blockchain</div>
-        <div class="team-member">Ana López - Directora de Marketing</div>
-        <div class="team-member">Carlos Gómez - Diseñador de Juego</div>
-    </section>
-
-    <!-- Comunidad -->
-    <section id="community" class="fade-in">
-        <h2>Únete a Nuestra Comunidad</h2>
-        <p>Sigue nuestras redes sociales y únete a los grupos de Telegram, Discord y Twitter para estar al tanto de todas las novedades.</p>
-    </section>
-
-    <!-- Testimonios -->
-    <section id="testimonials" class="fade-in">
-        <h2>Testimonios</h2>
-        <div class="testimonial">"¡Gallito Token es increíble! ¡Estoy emocionado por jugar Gallito Arena!" - Usuario 1</div>
-        <div class="testimonial">"Compre GTO y ya he ganado recompensas. ¡Muy recomendable!" - Usuario 2</div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contact" class="fade-in">
-        <h2>Contacto</h2>
-        <p>Si tienes alguna duda o pregunta, no dudes en contactarnos.</p>
-        <p>Email: contacto@gallito.com</p>
-    </section>
-
+    <!-- Script -->
     <script>
         let web3;
         let userAccount;
 
-        // Conectar la billetera
+        // Conectar billetera
         async function connectWallet() {
             if (window.ethereum) {
                 web3 = new Web3(window.ethereum);
@@ -170,24 +121,24 @@
                     await window.ethereum.request({ method: 'eth_requestAccounts' });
                     const accounts = await web3.eth.getAccounts();
                     userAccount = accounts[0];
-                    document.getElementById("status").innerHTML = "Billetera conectada: " + userAccount;
+                    alert("Billetera conectada: " + userAccount);
                 } catch (error) {
                     console.error(error);
-                    alert("¡Error! No se pudo conectar la billetera.");
+                    alert("¡Error al conectar la billetera!");
                 }
             } else {
                 alert("¡Instala MetaMask!");
             }
         }
 
-        // Comprar tokens
+        // Comprar Tokens
         async function buyTokens() {
             if (userAccount) {
                 const tokenAddress = "0x659a0f0D27378c9f25B97B0fE0F0df6fD1a6D3d4"; // Dirección del contrato
-                const tokenABI = [{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
+                const tokenABI = [{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]; // ABI básico
 
                 const tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
-                const amountToBuy = web3.utils.toWei('1', 'ether'); // Cambia por la cantidad que el usuario quiere comprar
+                const amountToBuy = web3.utils.toWei('1', 'ether'); // Cambia por la cantidad de GTO que deseas comprar
 
                 try {
                     await web3.eth.sendTransaction({
@@ -195,7 +146,6 @@
                         to: tokenAddress,
                         value: amountToBuy
                     });
-
                     alert("¡Compra exitosa de GTO!");
                 } catch (error) {
                     console.error(error);
@@ -206,6 +156,5 @@
             }
         }
     </script>
-
 </body>
 </html>
