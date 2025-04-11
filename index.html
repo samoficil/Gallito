@@ -16,7 +16,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         h1 {
@@ -77,6 +77,19 @@
             font-size: 1.2em;
         }
 
+        .images-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .images-gallery img {
+            max-width: 400px;
+            height: auto;
+        }
+
         /* Animaciones */
         @keyframes fadeIn {
             0% { opacity: 0; }
@@ -88,9 +101,10 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Agregar más espacio al final de la página */
-        .extra-space {
-            height: 2000px; /* Puedes ajustar este valor para hacer la página más larga o corta */
+        .counter {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -113,8 +127,36 @@
         <img src="https://via.placeholder.com/800x400" alt="Imagen de Gallito Arena" style="max-width: 100%; height: auto; margin-top: 20px;">
     </div>
 
-    <!-- Sección adicional para alargar la página -->
-    <div class="extra-space"></div>
+    <!-- Sección de imágenes del juego -->
+    <div class="images-gallery">
+        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 1">
+        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 2">
+        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 3">
+        <img src="https://via.placeholder.com/400x300" alt="Imagen del juego 4">
+    </div>
+
+    <!-- Contador de suministro -->
+    <div class="content-section">
+        <h2>Contador de Suministro</h2>
+        <p>Aquí podrás ver el suministro total de GTO en circulación.</p>
+        <div class="counter" id="supplyCounter">Suministro Total: 1,000,000,000 GTO</div>
+    </div>
+
+    <!-- Otras secciones -->
+    <div class="content-section">
+        <h2>¿Qué es Gallito Arena?</h2>
+        <p>Gallito Arena es un juego Play-to-Earn que te permite ganar GTO mientras compites en batallas contra otros jugadores. ¡Ponte a prueba, forma alianzas y gana recompensas únicas!</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Recompensas Exclusivas</h2>
+        <p>Participa en eventos especiales dentro del juego y consigue tokens GTO como recompensa. ¡Las batallas nunca fueron tan emocionantes!</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Noticias del Juego</h2>
+        <p>¡Mantente al tanto de las últimas actualizaciones de Gallito Arena! Nuevas características, personajes y mucho más por venir.</p>
+    </div>
 
     <!-- Script -->
     <script>
@@ -163,6 +205,16 @@
                 alert("¡Conecta tu billetera primero!");
             }
         }
+
+        // Simulando el contador de suministro
+        let totalSupply = 1000000000; // Suministro total de GTO
+        let supplyCounter = document.getElementById("supplyCounter");
+
+        function updateSupplyCounter() {
+            supplyCounter.textContent = `Suministro Total: ${totalSupply} GTO`;
+        }
+
+        setInterval(updateSupplyCounter, 1000); // Actualiza cada segundo (esto es solo un ejemplo)
     </script>
 </body>
 </html>
